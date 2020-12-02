@@ -10,16 +10,11 @@ with open('/Users/mike/git/advent-of-code-2020/day_01/input.txt', 'r') as f:
 print(sort_time)
 
 # PART 1
-def find_prod_of_pair(nums, target=2020):
-    pairs = target - nums
-    for i, pair in enumerate(pairs):
-        if pair in nums:
-            print(nums[i]*pair)
-            break
-
-
 start = time()
-find_prod_of_pair(nums)
+for n in nums:
+    if 2020 - n in nums:
+        print(n*(2020 - n))
+        break
 end = time()
 print(end - start)
 
@@ -27,13 +22,9 @@ print(end - start)
 start = time()
 for i, n in enumerate(nums):
     for j, m in enumerate(nums):
-        for k, l in enumerate(nums):
-            if i != j and j != k and n + m + l == 2020:
-                print(n*m*l)
-                break
-        else:
-            continue
-        break
+        if 2020 - n - m in nums:
+            print(n*m*(2020 - n - m))
+            break
     else:
         continue
     break
